@@ -6,6 +6,7 @@ const cors = require("cors")
 const router = require("./routes/APTRoute")
 
 const connectDB = require("./db/connect")
+const notFound = require("./middleware/notFound")
 
 const app = express();
 // Missing Body Parser:
@@ -20,6 +21,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", router)
+
+app.use(notFound)
 
 const start = async () => {
     try {

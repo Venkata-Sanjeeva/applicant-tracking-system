@@ -10,7 +10,7 @@ const aptSchema = new mongoose.Schema(
         }, 
         dateApplied: {
             type: String,
-            required: true
+            default: Date.now
         }, 
         role: {
             type: String,
@@ -18,7 +18,7 @@ const aptSchema = new mongoose.Schema(
         }, 
         salary: {
             type: Number,
-            required: true
+            default: 10000
         }, 
         status: {
             type: String,
