@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applicant Tracing System API Documentation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    h1, h2, h3 {
+      color: #444;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      color: #d6336c;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Applicant Tracing System API Documentation</h1>
+    <p>This document describes the endpoints and functionality of the Applicant Tracing System API, which allows users to manage application data (create, read, update, and delete).</p>
+
+    <h2>Base URL</h2>
+    <pre><code>http://localhost:3000</code></pre>
+
+    <h2>Endpoints</h2>
+
+    <h3>1. Upload Application Data</h3>
+    <p><strong>Endpoint:</strong></p>
+    <pre><code>POST /api/upload</code></pre>
+    <p><strong>Description:</strong> Uploads a new application data object to the database.</p>
+    <p><strong>Request Headers:</strong></p>
+    <pre><code>{
+  "Content-Type": "application/json"
+}</code></pre>
+    <p><strong>Request Body:</strong></p>
+    <pre><code>{
+  "field1": "value1",
+  "field2": "value2",
+  "..."
+}</code></pre>
+    <p><strong>Response (201 - Created):</strong></p>
+    <pre><code>{
+  "dataObj": {
+    "_id": "unique_id",
+    "field1": "value1",
+    "field2": "value2",
+    "...": "...",
+    "createdAt": "timestamp",
+    "updatedAt": "timestamp"
+  }
+}</code></pre>
+
+    <h3>2. Get All Application Data</h3>
+    <p><strong>Endpoint:</strong></p>
+    <pre><code>GET /api/getData</code></pre>
+    <p><strong>Description:</strong> Retrieves all application data stored in the database.</p>
+    <p><strong>Response (200 - OK):</strong></p>
+    <pre><code>{
+  "applications": [
+    {
+      "_id": "unique_id",
+      "field1": "value1",
+      "field2": "value2",
+      "..."
+    },
+    {
+      "_id": "unique_id2",
+      "field1": "value1",
+      "field2": "value2",
+      "..."
+    }
+  ]
+}</code></pre>
+
+    <h3>3. Update Application Data</h3>
+    <p><strong>Endpoint:</strong></p>
+    <pre><code>PATCH /api/update</code></pre>
+    <p><strong>Description:</strong> Updates an existing application data object in the database by its ID.</p>
+    <p><strong>Query Parameters:</strong></p>
+    <pre><code>?id=application_id</code></pre>
+    <p><strong>Request Headers:</strong></p>
+    <pre><code>{
+  "Content-Type": "application/json"
+}</code></pre>
+    <p><strong>Request Body:</strong></p>
+    <pre><code>{
+  "field1": "new_value1",
+  "field2": "new_value2",
+  "..."
+}</code></pre>
+    <p><strong>Response (200 - OK):</strong></p>
+    <pre><code>{
+  "msg": "Application Updated Successfully!"
+}</code></pre>
+    <p><strong>Response (400 - Bad Request):</strong></p>
+    <pre><code>{
+  "msg": "Application not found!!!"
+}</code></pre>
+
+    <h3>4. Delete Application Data</h3>
+    <p><strong>Endpoint:</strong></p>
+    <pre><code>DELETE /api/delete</code></pre>
+    <p><strong>Description:</strong> Deletes an application data object from the database by its ID.</p>
+    <p><strong>Query Parameters:</strong></p>
+    <pre><code>?id=application_id</code></pre>
+    <p><strong>Response (200 - OK):</strong></p>
+    <pre><code>{
+  "msg": "Deleted Successfully!"
+}</code></pre>
+    <p><strong>Response (400 - Bad Request):</strong></p>
+    <pre><code>{
+  "msg": "Application not found!!!"
+}</code></pre>
+
+    <h2>Error Responses</h2>
+    <p><strong>500 Internal Server Error:</strong></p>
+    <pre><code>{
+  "msg": "Error deleting application"
+}</code></pre>
+
+    <h2>Setup Instructions</h2>
+    <ol>
+      <li>Install dependencies:</li>
+      <pre><code>npm install express mongoose dotenv cors</code></pre>
+      <li>Start the server:</li>
+      <pre><code>node server.js</code></pre>
+      <li>Set your <code>.env</code> file with the following:</li>
+      <pre><code>MONGO_URI=your_mongo_db_connection_string</code></pre>
+    </ol>
+
+    <h2>Contact</h2>
+    <p>For issues or inquiries, contact the development head <strong>VenkataSanjeeva Kuntumalla</strong>.</p>
+  </div>
+</body>
+</html>

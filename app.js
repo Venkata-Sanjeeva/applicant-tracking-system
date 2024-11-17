@@ -20,6 +20,7 @@ app.use(express.json());
 
 app.use(cors());
 
+app.use(express.static("public"))
 app.use("/", router)
 
 app.use(notFound)
